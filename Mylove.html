@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Dayana 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #1a001f, #000);
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .amor {
+      position: absolute;
+      color: rgb(163, 102, 146);
+      font-size: 1.2em;
+      opacity: 0;
+      transform: scale(0.1);
+      pointer-events: none;
+      animation: aparecer 3.5s ease-out forwards;
+    }
+
+    @keyframes aparecer {
+      0% {
+        transform: scale(0.1) translateZ(-500px);
+        opacity: 0;
+      }
+      50% {
+        opacity: 2;
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .amor {
+        font-size: 1em !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const palabras = [
+    '💖 TE AMO 💖',
+    'DAYANITA',
+    'MI BEBITA',
+    'PRINCESITA',
+    'PRECIOSA',
+    'ERES MI VIDA',
+    'MI NIÑA',
+    'TE QUIERO',
+    'OJITOS BONITOS😍',
+    '💘',
+    '💞'
+  ];
+
+  function crearPalabra() {
+    const el = document.createElement('div');
+    el.classList.add('amor');
+
+    const texto = palabras[Math.floor(Math.random() * palabras.length)];
+    el.innerText = texto;
+
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = Math.random() * 100 + 'vh';
+    el.style.fontSize = (texto === 'DAYANITA') ? '2.4em' : (1 + Math.random() * 0.8) + 'em';
+    el.style.fontFamily = (texto === 'DAYANITA') ? 'Pacifico, cursive' : (Math.random() > 0.5 ? 'Pacifico, cursive' : 'Montserrat, sans-serif');
+    el.style.animationDuration = (2.8 + Math.random() * 1.5) + 's';
+
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+      el.remove();
+    }, 4000);
+  }
+
+  setInterval(crearPalabra, 250);
+ </script> 
+
+<button onclick="document.getElementById('audio').play()">🎶 Reproducir música</button>
+<button onclick="document.getElementById('audio').pause()">🎶 Pausar música</button>
+<audio id="audio" loop>
+  <source src="Eres un Sueño.mp3" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>
